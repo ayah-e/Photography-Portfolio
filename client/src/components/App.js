@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import Login from "../components/Login";
 import Home from './Home'
 import SplashPage from './SplashPage';
@@ -14,6 +14,7 @@ import {DataProvider} from "./Context";
 function App() {
   const [user, setUser] = useState(null);
 
+
   useEffect(() => {
     // auto-login
     fetch("/check_session").then((r) => {
@@ -23,12 +24,14 @@ function App() {
     });
   }, []);
 
+  const location = useLocation();
+
   if (!user) return <Login onLogin={setUser} />;
 
 
 return (
   <DataProvider>
-        <Nav />
+    {location.pathname === "/" ? null : <Nav />}
     <div className = "App">
       <Switch>
         <Route exact path = "/">
@@ -37,11 +40,13 @@ return (
         <Route path = "/home">
           <Home/>
         </Route>
+        <Route path = "/AboutMe">
+        <AboutMe />
+        </Route>
         <Route path = "/Contact">
         <ContactPage />
         </Route>
         <FilmSimsPage />
-        <AboutMe />
       </Switch>
     </div>
   </DataProvider>
