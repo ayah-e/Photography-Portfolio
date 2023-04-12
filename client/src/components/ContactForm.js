@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Form, Button } from "semantic-ui-react";
 
 function ContactForm() {
@@ -6,6 +6,19 @@ function ContactForm() {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState('');
+
+  const [users, setUsers] = useState([]);
+
+    // retrieve current user's username on component mount
+    useEffect(() => {
+        setCurrentUser('example_username');
+        fetch('/users')
+          .then(response => response.json())
+          .then(data => setUsers(data))
+          .catch(error => console.log(error));
+      }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -82,8 +95,10 @@ function ContactForm() {
         </Form.Field>
         <Button type="submit" primary>Submit</Button>
       </Form>
-
+      {/* I want to conditionally render the Get Contacts button for when I am logged into the site so no one else can access it */}
+    {currentUser === 'example_username' && (
       <button onClick={handleGetContacts}>Get Contacts</button>
+      )}
       <ul>
         {contacts.map((contact) => (
           <li key={contact.id}>

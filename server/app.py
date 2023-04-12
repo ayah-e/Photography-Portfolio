@@ -100,14 +100,50 @@ api.add_resource(Logout, '/logout', endpoint='logout')
 
 
 
-
-
-
 #build routes
 
 @app.route('/')
 def home():
     return ''
+
+#GET and POST for User
+#need to make admin only login so only admin can see certain elements/buttons
+@app.route('/users', methods=['GET', 'POST'])
+def user():
+    users = User.query.all()
+    if request.method == 'GET':
+        users_dict = [user.to_dict() for user in users]
+
+        response = make_response(
+            jsonify(users_dict),
+            200
+        )
+
+        return response
+    
+
+    elif request.method == 'POST':
+
+        try:
+            new_user = User(
+                username = request.get_json()['username'],
+
+            )
+            db.session.add(new_user)
+            db.session.commit()
+
+            response = make_response(
+                jsonify(new_user.to_dict()),
+                201
+            )
+
+        except ValueError:
+
+            response = make_response(
+                {"error": "validation errors"},
+                400
+            )
+    return response
 
 
 #GET and POST for Photo
