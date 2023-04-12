@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect, useState, useContext}  from "react";
 import PhotoCard from "./PhotoCard";
+import {DataContext} from "./Context";
 
 // In this component we will create our photos object/break it down you feel me
 // we want to pass down the photos parts as props to PhotoCard after this
 
 
-function PhotoList({photos}) {
+function PhotoList() {
+// this const is for the photos array that i fetched from Context.js
+    const {photos} = useContext(DataContext);
+
+
     const photoCards = photos.map((photo)=>{
         return (
             <PhotoCard 
@@ -26,3 +31,4 @@ function PhotoList({photos}) {
 }
 
 export default PhotoList;
+

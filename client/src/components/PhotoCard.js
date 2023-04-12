@@ -1,10 +1,11 @@
 import React from "react";
+import "./PhotoPage.css"
 // add a handleDelete in this component that can only be seen if I am logged in
 // make it a conditional so that if username is (my username) then i can see the delete and post options
 
 function PhotoCard({cinebloom_10, description, film, image, location, type}) {
     return(
-        <div>
+        <div className = "photo">
             <img src = {image} alt = {description}/>
             <p>{description} </p>
         </div>

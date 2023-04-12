@@ -46,8 +46,16 @@ with app.app_context():
 
     everyday1 = Photo(description = "", location = "", film = "", cinebloom_10 = False, type = "Everyday", image = "")
 
+    euphoric1 = Photo(description = "2013 Girl's Night Core", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/L2we1qL.jpg")
+    euphoric2 = Photo(description = "In focus", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/t7h27RV.jpg")
+    euphoric3 = Photo(description = "Hair roller", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/nbTq9Ut.jpg")
+    euphoric4 = Photo(description = "2013 Girl's Night Core", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/ndHNvzG.jpg")
+    euphoric5 = Photo(description = "Are you a Harry fan?", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/xhqdDvH.jpg")
+    euphoric6 = Photo(description = "2013 Girl's Night Core", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/qsTP9TP.jpg")
+    euphoric7 = Photo(description = "2013 Girl's Night Core", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/XY1yonP.jpg")
 
-    photos = [nature1, nature2, nature3, nature4, nature5, dukefarm1, dukefarm2, dukefarm3, dukefarm4, dukefarm5, egypt1, portrait1, event1, grad1, everyday1]
+
+    photos = [nature1, nature2, nature3, nature4, nature5, dukefarm1, dukefarm2, dukefarm3, dukefarm4, dukefarm5, egypt1, portrait1, event1, grad1, everyday1, euphoric1, euphoric2, euphoric3, euphoric4, euphoric5, euphoric6, euphoric7]
     
 
     print("Creating Film Simulations...")
