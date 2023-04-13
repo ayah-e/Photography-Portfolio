@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Form, Button } from "semantic-ui-react";
+import './ContactForm.css';
 
 function ContactForm() {
   const [name, setName] = useState('');

@@ -7,7 +7,8 @@ import Nav from './Nav';
 import ContactPage from './ContactPage';
 import FilmSimsPage from './FilmSimsPage';
 import AboutMe from './AboutMe';
-import {DataProvider} from "./Context";
+import Portfolio from './Portfolio';
+import {DataContext, DataProvider} from "./Context";
 
 
 
@@ -46,7 +47,12 @@ return (
         <Route path = "/Contact">
         <ContactPage />
         </Route>
+        <Route path = "/filmsimulations">
         <FilmSimsPage />
+        </Route>
+        <Route path = "/portfolio">
+          <Portfolio/>
+        </Route>
       </Switch>
     </div>
   </DataProvider>
