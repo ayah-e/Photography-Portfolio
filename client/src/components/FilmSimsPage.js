@@ -2,7 +2,9 @@ import React from "react";
 
 function FilmSimsPage() { 
     return(
-        <div></div>
+        <div>
+            Information about film sims I use will be here
+        </div>
     )
 }
 

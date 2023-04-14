@@ -135,3 +135,11 @@ class ClientContact(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
 
 
+#validations
+    @validates("name")
+    def validate_price(self, key, name):
+        if len(name) >= 1 and len(name) <= 30:
+            return name
+        raise ValueError("invalid name")
+
+
