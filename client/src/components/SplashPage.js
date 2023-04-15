@@ -5,7 +5,7 @@ function SplashPage() {
     return (
         <div>Splash Page goes here. Your logo blah blah you know the vibes
             <Link to = "/home">
-                <button>Login</button>
+                <button>Placeholder</button>
             </Link>
         </div>
     )

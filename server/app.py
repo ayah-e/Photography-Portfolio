@@ -6,7 +6,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 from sqlalchemy.exc import IntegrityError
 
-from models import db, User, Photo, FilmSimulation, FilmSimPhoto, Camera, ClientContact
+from models import db, User, Photo, FilmSimulation, FilmSimPhoto, Camera, ShootIdea
 # Local imports
 from config import app, db, api
 
@@ -277,15 +277,15 @@ def filmSimPhotos(id):
     
 
 
-#GET and POST for client contacts
-@app.route('/contacts', methods=['GET', 'POST'])
-def contact():
-    contacts = ClientContact.query.all()
+#GET and POST for shoot ideas
+@app.route('/shoot_ideas', methods=['GET', 'POST'])
+def shoot():
+    shoots = ShootIdea.query.all()
     if request.method == 'GET':
-        contacts_dict = [contact.to_dict() for contact in contacts]
+        shoots_dict = [shoot.to_dict() for shoot in shoots]
 
         response = make_response(
-            jsonify(contacts_dict),
+            jsonify(shoots_dict),
             200
         )
 
@@ -295,16 +295,16 @@ def contact():
     elif request.method == 'POST':
 
         try:
-            new_contact = ClientContact(
+            new_shoot = ShootIdea(
                 name = request.get_json()['name'],
-                email = request.get_json()['email'],
-                comment = request.get_json()['comment'],
+                models = request.get_json()['models'],
+                description = request.get_json()['description'],
             )
-            db.session.add(new_contact)
+            db.session.add(new_shoot)
             db.session.commit()
 
             response = make_response(
-                jsonify(new_contact.to_dict()),
+                jsonify(new_shoot.to_dict()),
                 201
             )
 
@@ -314,6 +314,25 @@ def contact():
                 {"error": "validation errors"},
                 400
             )
+    return response
+
+@app.route('/shoot_ideas/<int:id>', methods=['DELETE'])
+def delete_shoot(id):
+    shoot = ShootIdea.query.get(id)
+    if not shoot:
+        response = make_response(
+            {"error": "shoot not found"},
+            404
+        )
+    else:
+        db.session.delete(shoot)
+        db.session.commit()
+
+        response = make_response(
+            {"message": "shoot idea deleted"},
+            200
+        )
+
     return response
 
 

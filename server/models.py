@@ -124,13 +124,13 @@ class Camera(db.Model, SerializerMixin):
 
 #Client Contact Model
 
-class ClientContact(db.Model, SerializerMixin):
-    __tablename__ = "client_contacts"
+class ShootIdea(db.Model, SerializerMixin):
+    __tablename__ = "shoot_ideas"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    email = db.Column(db.String)
-    comment = db.Column(db.String)
+    models = db.Column(db.String)
+    description = db.Column(db.String)
     created_at = db.Column(db.DateTime, server_default = db.func.now())
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
 

@@ -4,7 +4,7 @@ import Login from "../components/Login";
 import Home from './Home'
 import SplashPage from './SplashPage';
 import Nav from './Nav';
-import ContactPage from './ContactPage';
+import ShootPage from './ShootPage';
 import FilmSimsPage from './FilmSimsPage';
 import AboutMe from './AboutMe';
 import Portfolio from './Portfolio';
@@ -32,7 +32,7 @@ function App() {
 
 return (
   <DataProvider>
-    {location.pathname === "/" ? null : <Nav />}
+    {location.pathname === "/" ? null : <Nav setUser = {setUser} user = {user} />}
     <div className = "App">
       <Switch>
         <Route exact path = "/">
@@ -44,8 +44,8 @@ return (
         <Route path = "/AboutMe">
         <AboutMe />
         </Route>
-        <Route path = "/Contact">
-        <ContactPage />
+        <Route path = "/Shoots">
+        <ShootPage />
         </Route>
         <Route path = "/filmsimulations">
         <FilmSimsPage />

@@ -57,6 +57,7 @@ function Portfolio() {
     setCurrentView(filteredPhotos);
     setListView(true);
   }
+  
 
   return listView ? (
     // (

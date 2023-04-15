@@ -1,7 +1,7 @@
 from random import choice as rc
 
 from app import app
-from models import db, FilmSimulation, Photo, FilmSimPhoto, Camera, ClientContact, User
+from models import db, FilmSimulation, Photo, FilmSimPhoto, Camera, ShootIdea, User
 
 with app.app_context():
 
