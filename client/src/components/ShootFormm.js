@@ -40,6 +40,8 @@ function ShootFormm() {
 
   const [shootIdeas, setShootIdeas] = useState([]);
 
+  // Get
+
   const handleGetShootIdeas = async () => {
     try {
       const response = await fetch("/shoot_ideas");
@@ -50,6 +52,8 @@ function ShootFormm() {
       console.log(error);
     }
   };
+
+  // Delete
 
   const handleDeleteShootIdea = async (id) => {
     try {
@@ -68,58 +72,136 @@ function ShootFormm() {
       alert('An error occurred while deleting the shoot idea. Please try again later.');
     }
   };
-  
 
-  return (
-    <div className="ui raised very padded text container segment">
-      <h2>Shoot Ideas</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Field>
-          <label>Shoot Name</label>
-          <input
-            type="text"
-            placeholder="Shoot Name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Models</label>
-          <input
-            type="text"
-            placeholder="Models"
-            value={models}
-            onChange={(event) => setModels(event.target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Description</label>
-          <textarea
-            rows="4"
-            placeholder="Description"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          ></textarea>
-        </Form.Field>
-        <Button type="submit" primary>
-          Submit
-        </Button>
-      </Form>
+  // Patch
+  const [editingShootIdea, setEditingShootIdea] = useState(null);
 
-      <button onClick={handleGetShootIdeas}>View Shoot Ideas</button>
+  const handleEditShootIdea = (shootIdea) => {
+    setEditingShootIdea(shootIdea);
+    setName(shootIdea.name);
+    setModels(shootIdea.models);
+    setDescription(shootIdea.description);
+  };
 
-      <ul>
-        {shootIdeas.map((shootIdea) => (
-          <li key={shootIdea.id}>
-            {shootIdea.name} ({shootIdea.models}): {shootIdea.description}
-            <button onClick={() => handleDeleteShootIdea(shootIdea.id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+  const handleUpdateShootIdea = async (id, updatedData) => {
+    try {
+      const response = await fetch(`/shoot_ideas/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+      });
+      const data = await response.json();
+      console.log(data);
+      alert('Shoot idea updated successfully');
+      // Update the shoot idea in the state
+      setShootIdeas(shootIdeas.map((shootIdea) => {
+        if (shootIdea.id === id) {
+          return { ...shootIdea, ...updatedData };
+        }
+        return shootIdea;
+      }));
+      setEditingShootIdea(null);
+      setName("");
+      setModels("");
+      setDescription("");
+    } catch (error) {
+      console.log(error);
+      alert('An error occurred while updating the shoot idea. Please try again later.');
+    }
+  };
 
-export default ShootFormm;
+return (
+  <div className="ui raised very padded text container segment">
+    <h2>Shoot Ideas</h2>
+    <Form onSubmit={handleSubmit}>
+      <Form.Field>
+        <label>Shoot Name</label>
+        <input
+          type="text"
+          placeholder="Shoot Name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+      </Form.Field>
+      <Form.Field>
+        <label>Models</label>
+        <input
+          type="text"
+          placeholder="Models"
+          value={models}
+          onChange={(event) => setModels(event.target.value)}
+        />
+      </Form.Field>
+      <Form.Field>
+        <label>Description</label>
+        <textarea
+          rows="4"
+          placeholder="Description"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+        ></textarea>
+      </Form.Field>
+      <Button type="submit" primary disabled={submitting}>
+        Submit
+      </Button>
+    </Form>
+
+    <button onClick={handleGetShootIdeas}>View Shoot Ideas</button>
+
+    <ul>
+      {shootIdeas.map((shootIdea) => (
+        <li key={shootIdea.id}>
+          {editingShootIdea && editingShootIdea.id === shootIdea.id ? (
+            <>
+              <Form onSubmit={() => handleUpdateShootIdea(editingShootIdea.id, { name, models, description })}>
+                <Form.Field>
+                  <label>Shoot Name</label>
+                  <input
+                    type="text"
+                    placeholder="Shoot Name"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Models</label>
+                  <input
+                    type="text"
+                    placeholder="Models"
+                    value={models}
+                    onChange={(event) => setModels(event.target.value)}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Description</label>
+                  <textarea
+                    rows="4"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(event) => setDescription(event.target.value)}
+                  ></textarea>
+                </Form.Field>
+                <Button type="submit" primary disabled={submitting}>
+                  Update
+                </Button>
+                <Button onClick={() => setEditingShootIdea(null)}>Cancel</Button>
+              </Form>
+            </>
+          ) : (
+            <>
+              {shootIdea.name} ({shootIdea.models}): {shootIdea.description}
+              <button onClick={() => handleDeleteShootIdea(shootIdea.id)}>Delete</button>
+              <button onClick={() => handleEditShootIdea(shootIdea)}>Edit</button>
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+          }
+
+
+          export default ShootFormm;

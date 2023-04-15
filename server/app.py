@@ -335,6 +335,32 @@ def delete_shoot(id):
 
     return response
 
+@app.route('/shoot_ideas/<int:id>', methods=['PATCH'])
+def update_shoot(id):
+    shoot = ShootIdea.query.get(id)
+    if not shoot:
+        response = make_response(
+            {"error": "shoot not found"},
+            404
+        )
+    else:
+        data = request.get_json()
+        if "name" in data:
+            shoot.name = data["name"]
+        if "description" in data:
+            shoot.description = data["description"]
+        if "models" in data:
+            shoot.models = data["models"]
+        db.session.commit()
+
+        response = make_response(
+            {"message": "shoot idea updated"},
+            200
+        )
+
+    return response
+
+
 
 # Views go here!
 
