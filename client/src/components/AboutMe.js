@@ -5,7 +5,7 @@ function AboutMe() {
     return(
         <div className="about-me">
             <div>
-            <img src="https://i.imgur.com/9z9GLzN.jpg" alt="My Photo" />
+            <img className = "about-me-pic" src="https://i.imgur.com/9z9GLzN.jpg" alt="My Photo"  />
             </div>
             <p>
             Welcome to my photography portfolio! My name is Ayah Elsais, and I am a photographer who loves to capture moments and tell stories through my lens. I specialize in using custom film simulations on my Fujifilm x100v camera to recreate the nostalgic and classic look of film photography.

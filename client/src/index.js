@@ -4,6 +4,8 @@ import App from "./components/App";
 import { BrowserRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import 'semantic-ui-css/semantic.min.css'
+import './index.css';
+
 
 const GlobalStyle = createGlobalStyle`
   *,

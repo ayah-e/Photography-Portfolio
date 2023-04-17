@@ -15,10 +15,14 @@ function Nav({user, setUser}) {
           }
         });
       }
-    
+
+    //   function handlePortfolioClick() {
+    //     window.location.reload();
+    // }
+    // onClick={handlePortfolioClick} 
 
     return (
-        <div>
+        <div className = "nav-container"  style={{ position: "relative" }}>
         <div className="nav-wrapper white">
             <Link to="/" className="brand-logo left" style={{color:"black", fontFamily: "Arial"}}>Pinch Me so I Know its Real</Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">

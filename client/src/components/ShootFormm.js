@@ -6,6 +6,8 @@ function ShootFormm() {
   const [models, setModels] = useState("");
   const [description, setDescription] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  // toggle for showing shoot ideas when button is clicked
+  const [showShootIdeas, setShowShootIdeas] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +50,7 @@ function ShootFormm() {
       const data = await response.json();
       console.log(data);
       setShootIdeas(data);
+      setShowShootIdeas(!showShootIdeas); // toggle the state of showShootIdeas
     } catch (error) {
       console.log(error);
     }
@@ -112,10 +115,12 @@ function ShootFormm() {
     }
   };
 
+
+
 return (
-  <div className="ui raised very padded text container segment">
+  <div className="ui raised very padded text container segment" >
     <h2>Shoot Ideas</h2>
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} class="shadow-inner ...">
       <Form.Field>
         <label>Shoot Name</label>
         <input
@@ -148,57 +153,43 @@ return (
       </Button>
     </Form>
 
-    <button onClick={handleGetShootIdeas}>View Shoot Ideas</button>
-
-    <ul>
-      {shootIdeas.map((shootIdea) => (
-        <li key={shootIdea.id}>
-          {editingShootIdea && editingShootIdea.id === shootIdea.id ? (
-            <>
-              <Form onSubmit={() => handleUpdateShootIdea(editingShootIdea.id, { name, models, description })}>
-                <Form.Field>
-                  <label>Shoot Name</label>
-                  <input
-                    type="text"
-                    placeholder="Shoot Name"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label>Models</label>
-                  <input
-                    type="text"
-                    placeholder="Models"
-                    value={models}
-                    onChange={(event) => setModels(event.target.value)}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label>Description</label>
-                  <textarea
-                    rows="4"
-                    placeholder="Description"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                  ></textarea>
-                </Form.Field>
-                <Button type="submit" primary disabled={submitting}>
-                  Update
-                </Button>
-                <Button onClick={() => setEditingShootIdea(null)}>Cancel</Button>
-              </Form>
-            </>
-          ) : (
-            <>
-              {shootIdea.name} ({shootIdea.models}): {shootIdea.description}
-              <button onClick={() => handleDeleteShootIdea(shootIdea.id)}>Delete</button>
-              <button onClick={() => handleEditShootIdea(shootIdea)}>Edit</button>
-            </>
-          )}
-        </li>
-      ))}
-    </ul>
+    <Button onClick={handleGetShootIdeas}>{showShootIdeas ? "Hide Shoot Ideas" : "View Shoot Ideas"}</Button>
+      {showShootIdeas && ( // render the ul element based on showShootIdeas
+        <ul>
+          {shootIdeas.map((shootIdea) => (
+            <li key={shootIdea.id}>
+              {editingShootIdea && editingShootIdea.id === shootIdea.id ? (
+                <>
+                  <Form onSubmit={() => handleUpdateShootIdea(editingShootIdea.id, { name, models, description })}>
+                    <Form.Field>
+                      <label>Shoot Name</label>
+                      <input type="text" placeholder="Shoot Name" value={name} onChange={(event) => setName(event.target.value)} />
+                    </Form.Field>
+                    <Form.Field>
+                      <label>Models</label>
+                      <input type="text" placeholder="Models" value={models} onChange={(event) => setModels(event.target.value)} />
+                    </Form.Field>
+                    <Form.Field>
+                      <label>Description</label>
+                      <textarea rows="4" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
+                    </Form.Field>
+                    <Button type="submit" primary disabled={submitting}>
+                      Update
+                    </Button>
+                    <Button onClick={() => setEditingShootIdea(null)}>Cancel</Button>
+                  </Form>
+                </>
+              ) : (
+                <>
+                  {shootIdea.name} ({shootIdea.models}): {shootIdea.description}
+                  <button onClick={() => handleDeleteShootIdea(shootIdea.id)}>Delete</button>
+                  <button onClick={() => handleEditShootIdea(shootIdea)}>Edit</button>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
   </div>
 );
           }

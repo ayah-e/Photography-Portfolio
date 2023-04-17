@@ -10,41 +10,11 @@ function Portfolio() {
     photos,
     setPhotos,
     portraitMain,
-    setPortraitMain,
-    euphoricMain,
-    setEuphoricMain,
-    dukeFarmsMain,
-    setDukeFarmsMain,
-    egyptMain,
-    setEgyptMain,
-    everydayMain,
-    setEverydayMain,
-    natureMain,
-    setNatureMain,
-    eventMain,
-    setEventMain,
-    gradMain,
-    setGradMain,
+
   } = useContext(DataContext);
 
   console.log(portraitMain);
 
-  // const [currentView, setCurrentView] = useState(photos);
-  // const [listView, setListView] = useState(false);
-
-  // // this function should render the photos by type category when one of the 8 images is clicked
-  // function filteredView(e) {
-  //     setListView(!true)
-  //     const filterType = "Portrait"
-  //     const filteredPhotos = photos.filter((photo) => photo.type === filterType)
-  //     filteredPhotos.map((photo) => {
-  //         return (
-  //             <div key={photo.id}>
-  //                 <img src={photo.url} alt={photo.alt} />
-  //             </div>
-  //         )
-  //     })
-  // }
 
   const [currentView, setCurrentView] = useState(photos);
   const [listView, setListView] = useState(false);
@@ -57,13 +27,11 @@ function Portfolio() {
     setCurrentView(filteredPhotos);
     setListView(true);
   }
-  
+
 
   return listView ? (
-    // (
-    //     <div>{()=>filteredView()}</div> //////////////////////////
-    // )
-    <div>
+
+    <div >
       {currentView.map((photo) => (
         <div key={photo.id} className = "portfolio-choice">
           <img src={photo.image} alt={photo.alt} />
