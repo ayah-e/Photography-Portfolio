@@ -32,8 +32,27 @@ with app.app_context():
     dukefarm4 = Photo(description = "jasmine portrait", location = "Duke Farms", film = "Kodachrome64", cinebloom_10 = False, type = "Duke Farms", image = "https://imgur.com/hj1QUSA.jpeg") 
     dukefarm5 = Photo(description = "jasmine again", location = "Duke Farms", film = "Kodachrome64", cinebloom_10 = False, type = "Duke Farms", image = "https://imgur.com/fsyCCV1.jpeg")
 
-    egypt1 = Photo(description = "", location = "", film = "", cinebloom_10 = False, type = "Egypt", image = "")
+    egypt1 = Photo(description = "inside restaurant", location = "", film = "", cinebloom_10 = False, type = "Egypt", image = "https://i.imgur.com/vopdtro.jpg")
+    egypt2= Photo(type = "Egypt", image = "https://i.imgur.com/Mn8yJxy.jpg")
+    egypt3 = Photo(type="Egypt", image="https://i.imgur.com/JJ6O5mR.jpg")
+    egypt4 = Photo(type="Egypt", image="https://i.imgur.com/VPHuBbK.jpg")
+    egypt5 = Photo(type="Egypt", image="https://i.imgur.com/uJJLSFx.jpg")
+    egypt6 = Photo(type="Egypt", image="https://i.imgur.com/01XM3Cd.jpg")
+    egypt7 = Photo(type="Egypt", image="https://i.imgur.com/YmcysXD.jpg")
+    egypt8 = Photo(type="Egypt", image="https://i.imgur.com/biqHSs4.jpg")
+    egypt9 = Photo(type="Egypt", image="https://i.imgur.com/Z87JcNG.jpg")
+    egypt10 = Photo(type="Egypt", image="https://i.imgur.com/rkYGewe.jpg")
+    egypt11 = Photo(type="Egypt", image="https://i.imgur.com/2SUconD.jpg")
+    egypt12 = Photo(type="Egypt", image="https://i.imgur.com/KliQ3EK.jpg")
+    egypt13 = Photo(type="Egypt", image="https://i.imgur.com/Sm5KscM.jpg")
+    egypt14 = Photo(type="Egypt", image="https://i.imgur.com/B39Ov7H.jpg")
+    egypt15 = Photo(type="Egypt", image="https://i.imgur.com/YcXlXRu.jpg")
+    egypt16 = Photo(type="Egypt", image="https://i.imgur.com/MnT10SB.jpg")
+    egypt17 = Photo(type="Egypt", image="https://i.imgur.com/ch8uHKb.jpg")
+    egypt18 = Photo(type="Egypt", image="https://i.imgur.com/tlLoxCh.jpg")
+    egypt19 = Photo(type="Egypt", image="https://i.imgur.com/LUKq04E.jpg")
 
+ 
 
     portrait1 = Photo(description = "", location = "", film = "", cinebloom_10 = False, type = "Portrait", image = "")
 
@@ -55,7 +74,7 @@ with app.app_context():
     euphoric7 = Photo(description = "2013 Girl's Night Core", location = "", film = "point & shoot", cinebloom_10 = True, type = "Euphoric", image = "https://i.imgur.com/XY1yonP.jpg")
 
 
-    photos = [nature1, nature2, nature3, nature4, nature5, dukefarm1, dukefarm2, dukefarm3, dukefarm4, dukefarm5, egypt1, portrait1, event1, grad1, everyday1, euphoric1, euphoric2, euphoric3, euphoric4, euphoric5, euphoric6, euphoric7]
+    photos = [nature1, nature2, nature3, nature4, nature5, dukefarm1, dukefarm2, dukefarm3, dukefarm4, dukefarm5, egypt1, egypt2, egypt3, egypt4, egypt5, egypt6, egypt7, egypt8, egypt9, egypt10, egypt11, egypt12, egypt13, egypt14, egypt15, egypt16, egypt17, egypt18, egypt19, portrait1, event1, grad1, everyday1, euphoric1, euphoric2, euphoric3, euphoric4, euphoric5, euphoric6, euphoric7]
     
 
     print("Creating Film Simulations...")
