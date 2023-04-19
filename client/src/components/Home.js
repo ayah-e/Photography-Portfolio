@@ -9,7 +9,7 @@ import SixSvg from "../assets/6.svg"
 import ClientsSvg from "../assets/Clients.svg"
 import BackgroundSvg from "../assets/Background.svg"
 import ContactSvg from "../assets/Contact.svg"
-import TenSvg from "../assets/10.svg"
+// import TenSvg from "../assets/10.svg"
 
 // instead of fetching all of photos to this page we can use html and css to create a set Home page of specific photos
 
@@ -25,10 +25,7 @@ function Home() {
             <img src = {ClientsSvg} alt = "clients" />
             <img src = {BackgroundSvg} alt = "background"/>
             <img src = {ContactSvg} alt = "contact" />
-            <img src = {TenSvg} alt = "ten" />
-            {/* <div>
-                <PhotoPage />
-            </div> */}
+            {/* <img src = {TenSvg} alt = "ten" /> */}
         </div>
     )
 }

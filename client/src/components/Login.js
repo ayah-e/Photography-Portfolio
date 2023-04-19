@@ -9,7 +9,7 @@ function Login({ onLogin }) {
 
   return (
     <Wrapper>
-      <Logo>Pinch Me So I Know its Real </Logo>
+      <Logo>Pinch Me</Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
@@ -38,10 +38,10 @@ function Login({ onLogin }) {
 }
 
 const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
+  font-family: "TT Norms";
   font-size: 3rem;
-  color: deeppink;
-  margin: 8px 0 16px;
+  color: Black;
+
 `;
 
 const Wrapper = styled.section`

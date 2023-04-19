@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "semantic-ui-react";
+import "./ShootFormm.css"
 
 function ShootFormm() {
   const [name, setName] = useState("");
@@ -182,8 +183,8 @@ return (
               ) : (
                 <>
                   {shootIdea.name} ({shootIdea.models}): {shootIdea.description}
-                  <button onClick={() => handleDeleteShootIdea(shootIdea.id)}>Delete</button>
-                  <button onClick={() => handleEditShootIdea(shootIdea)}>Edit</button>
+                  <Button onClick={() => handleDeleteShootIdea(shootIdea.id)}>Delete</Button>
+                  <Button onClick={() => handleEditShootIdea(shootIdea)}>Edit</Button>
                 </>
               )}
             </li>
